@@ -1,0 +1,312 @@
+/* ================= VARIABLES & FONTS ================= */
+:root {
+    --primary-orange: #ff9f00;
+    --dark-orange: #e68e00;
+    --dark-text: #1a1a1a;
+    --light-bg: #fdfaf6;
+}
+
+.story-img {
+    max-width: 70%;
+    border-radius: 15px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, .logo-text, .footer-logo-text {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ================= ANIMATIONS ================= */
+.text-orange { color: var(--primary-orange); }
+
+.section-title {
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.title-underline {
+    height: 3px;
+    width: 60px;
+    background-color: var(--primary-orange);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Fade In Up Animation */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@media (min-width: 992px) {
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+}
+
+/* ================= Drop-Down ================= */
+
+.dropdown-menu {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: #ff8c00;
+    color: white;
+    border-radius: 5px;
+}
+
+/* ================= BUTTONS ================= */
+.btn-primary-orange {
+    background-color: var(--primary-orange);
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-orange:hover {
+    background-color: var(--dark-orange);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 159, 0, 0.3);
+}
+
+.btn-outline-orange {
+    color: var(--primary-orange);
+    border: 2px solid var(--primary-orange);
+    font-weight: 500;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-orange:hover {
+    background-color: var(--primary-orange);
+    color: #fff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    padding: 10px 0;
+}
+
+.navbar-bg {
+    background-color: #ffe97e69;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark-text) !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+/* ================= HERO SECTION ================= */
+.hero-section {
+    min-height: 80vh;
+    background-image: url(img/hero.jpg);
+    background-repeat: no-repeat;
+    padding: 60px 0;
+}
+.hero-img {
+    border-radius: 20px 20px 100px 20px; /* Stylish asymmetric border */
+    transition: transform 0.5s ease;
+}
+.hero-image-box:hover .hero-img {
+    transform: scale(1.03);
+}
+
+/* ================= SHOP SECTION ================= */
+.product-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: #fff;
+}
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1) !important;
+}
+.card-img-top {
+    height: 400px;
+    object-fit: cover;
+}
+.price-tag {
+    color: var(--primary-orange);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* ================= TESTIMONIALS ================= */
+.testimonials {
+    background-color: #fffaf2; /* Very light orange tint */
+}
+.testimonial-box {
+    border-top: 4px solid var(--primary-orange);
+    transition: transform 0.3s ease;
+}
+.testimonial-box:hover {
+    transform: translateY(-5px);
+}
+.quote-icon {
+    font-size: 3rem;
+    color: var(--primary-orange);
+    line-height: 1;
+}
+.review-text {
+    font-style: italic;
+    color: #555;
+}
+.customer-name {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+/* ================= WHATSAPP BUTTON ================= */
+
+/* WhatsApp Floating Button Style */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; /* WhatsApp Green */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.05);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float span {
+        display: none;
+    }
+    .whatsapp-float {
+        padding: 12px;
+        border-radius: 50%;
+    }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background-color: #1a1a1a;
+}
+
+.footer-logo {
+    filter: brightness(0);
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--primary-orange);
+    padding-left: 5px;
+}
+
+
+/* ================= FAQ PAGE STYLES ================= */
+
+.faq-wrapper {
+    max-width: 800px;
+    border-radius: 20px;
+}
+
+.faq-page-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+/* Button Styling */
+.accordion-button {
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    padding: 1.2rem 1rem;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #fffaf2;
+    color: var(--primary-orange);
+    box-shadow: none;
+}
+
+/* Hover effect on questions */
+.accordion-button:hover {
+    color: var(--primary-orange);
+    background-color: #fdfaf6;
+}
+
+/* Answer text styling */
+.accordion-body {
+    color: #666;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    background-color: #fffaf2;
+    padding-top: 0;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+/* Accordion items border */
+.accordion-item {
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* ================= SOCIAL ICONS HOVER ================= */
+.social-icon {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    color: var(--primary-orange) !important; 
+    transform: translateY(-5px) scale(1.1); 
+    text-shadow: 0 4px 10px rgba(255, 159, 0, 0.4); 
+}
