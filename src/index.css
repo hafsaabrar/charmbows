@@ -126,7 +126,7 @@ h1, h2, h3, .logo-text, .footer-logo-text {
 /* ================= HERO SECTION ================= */
 .hero-section {
     min-height: 80vh;
-    background-image: url(img/hero.jpg);
+    background-image: url('/img/hero.jpg');
     background-repeat: no-repeat;
     padding: 60px 0;
 }
