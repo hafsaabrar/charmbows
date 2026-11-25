@@ -144,21 +144,37 @@ section:hover .title-underline {
     }
 }
 
+/* Bootstrap dropdown caret/arrow aur orange line khatam karne ke liye */
+.navbar .dropdown-toggle::after,
+.navbar .dropdown-toggle::before,
+.navbar .dropdown-menu::before,
+.navbar .dropdown-menu::after {
+    display: none !important;
+    content: none !important;
+    border: none !important;
+}
+
 .dropdown-menu {
     border-radius: 14px;
     padding: 10px;
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color) !important;
     box-shadow: var(--card-shadow);
+    margin-top: 8px;
 }
 
 .dropdown-item {
     color: var(--text-main);
     font-size: 0.92rem;
+    border-radius: 8px;
+    padding: 8px 14px;
+    border-bottom: none !important;
+    text-decoration: none !important;
     transition: all 0.25s ease;
 }
 
-.dropdown-item:hover {
+.dropdown-item:hover,
+.dropdown-item:focus {
     background-color: var(--primary-orange);
     color: #fff;
     border-radius: 8px;
@@ -187,9 +203,13 @@ section:hover .title-underline {
     color: var(--primary-orange);
     border: 1.8px solid var(--primary-orange);
     font-weight: 500;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.72);
     border-radius: 50px;
     transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .btn-outline-orange {
+    background: transparent;
 }
 
 .btn-outline-orange:hover {
@@ -231,6 +251,8 @@ section:hover .title-underline {
     color: var(--text-main) !important;
     margin: 0 10px;
     position: relative;
+    border-bottom: none !important;
+    text-decoration: none !important;
     transition: color 0.3s ease;
 }
 
@@ -253,6 +275,35 @@ section:hover .title-underline {
     color: var(--primary-orange) !important;
 }
 
+/* Mobile & narrow screen navbar + dropdown layout */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-top: 12px;
+        padding-bottom: 10px;
+    }
+
+    .nav-link {
+        margin: 4px 0;
+        padding: 6px 4px;
+    }
+
+    .navbar .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        max-height: 210px;
+        overflow-y: auto;
+        box-shadow: 0 6px 18px rgba(26, 20, 10, 0.08);
+    }
+
+    .navbar .dropdown-item {
+        padding: 7px 12px;
+        font-size: 0.9rem;
+    }
+}
+
 [data-theme="dark"] .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.3);
 }
@@ -272,6 +323,7 @@ section:hover .title-underline {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    flex-shrink: 0;
     transition: all 0.35s ease;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }

@@ -1,12 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar({ theme, toggleTheme }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const location = useLocation();
+
+  // Route change hotay hi mobile menu aur dropdown band kar dein
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+  }, [location.pathname]);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const handleToggleDropdown = (e) => {
+    e.preventDefault();
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  const closeAllMenus = () => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-bg shadow-sm">
       <div className="container">
-        <Link className="navbar-brand" to="/">
-          <img src="/img/logo.jpg" width="65px" className="rounded-3" alt="Charm Bows Logo" />
+        <Link className="navbar-brand" to="/" onClick={closeAllMenus}>
+          <img
+            src="/img/logo.jpg"
+            width="65px"
+            className="rounded-3"
+            alt="Charm Bows Logo"
+          />
         </Link>
 
         <div className="d-flex align-items-center gap-2 order-lg-3">
@@ -64,50 +93,114 @@ function Navbar({ theme, toggleTheme }) {
           <button
             type="button"
             className="navbar-toggler ms-2"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation"
+            onClick={handleToggleMenu}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
 
-        <div className="collapse navbar-collapse order-lg-2" id="navbarNav">
+        <div
+          className={`collapse navbar-collapse order-lg-2 ${isMenuOpen ? 'show' : ''}`}
+          id="navbarNav"
+        >
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/" onClick={closeAllMenus}>
+                Home
+              </Link>
             </li>
-            <li className="nav-item dropdown">
+            <li className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
+                href="#categories"
                 id="navbarDropdown"
                 role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                aria-expanded={isDropdownOpen}
+                onClick={handleToggleDropdown}
               >
                 Categories
               </a>
-              <ul className="dropdown-menu border-0 shadow-sm" aria-labelledby="navbarDropdown">
-                <li><Link className="dropdown-item" to="/silk-bow">Hair Bows</Link></li>
-                <li><Link className="dropdown-item" to="/silk-scrunchie">Scrunchies</Link></li>
-                <li><Link className="dropdown-item" to="/bag">Potli Bags</Link></li>
-                <li><Link className="dropdown-item" to="/hairband">Hairbands</Link></li>
-                <li><Link className="dropdown-item" to="/pins">Pins</Link></li>
-                <li><Link className="dropdown-item" to="/koreanclaw">Korean Claw</Link></li>
-                <li><Link className="dropdown-item" to="/jewelry">Jewelry</Link></li>
-                <li><Link className="dropdown-item" to="/hairtassel">Hair Tassels</Link></li>
-                <li><Link className="dropdown-item" to="/crown">Turkish Style Crown</Link></li>
-                <li><Link className="dropdown-item" to="/babyfootwear">Baby Footwear</Link></li>
-                <li><Link className="dropdown-item" to="/kids-fashion">Kids Fashion</Link></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li><Link className="dropdown-item" to="/accessories">Night Accessories</Link></li>
+              <ul
+                className={`dropdown-menu border-0 shadow-sm ${isDropdownOpen ? 'show' : ''}`}
+                aria-labelledby="navbarDropdown"
+              >
+                <li>
+                  <Link className="dropdown-item" to="/silk-bow" onClick={closeAllMenus}>
+                    Hair Bows
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/silk-scrunchie" onClick={closeAllMenus}>
+                    Scrunchies
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/bag" onClick={closeAllMenus}>
+                    Potli Bags
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/hairband" onClick={closeAllMenus}>
+                    Hairbands
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/pins" onClick={closeAllMenus}>
+                    Pins
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/koreanclaw" onClick={closeAllMenus}>
+                    Korean Claw
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/jewelry" onClick={closeAllMenus}>
+                    Jewelry
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/hairtassel" onClick={closeAllMenus}>
+                    Hair Tassels
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/crown" onClick={closeAllMenus}>
+                    Turkish Style Crown
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/babyfootwear" onClick={closeAllMenus}>
+                    Baby Footwear
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/kids-fashion" onClick={closeAllMenus}>
+                    Kids Fashion
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accessories" onClick={closeAllMenus}>
+                    Night Accessories
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/reviews">Reviews</Link>
+              <Link className="nav-link" to="/reviews" onClick={closeAllMenus}>
+                Reviews
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contact</Link>
+              <Link className="nav-link" to="/contact" onClick={closeAllMenus}>
+                Contact
+              </Link>
             </li>
             <li className="nav-item d-sm-none mt-2">
               <a
@@ -115,6 +208,7 @@ function Navbar({ theme, toggleTheme }) {
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-primary-orange w-100"
+                onClick={closeAllMenus}
               >
                 Shop Now
               </a>
